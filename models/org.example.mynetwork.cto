@@ -2,19 +2,28 @@
  * My commodity trading network
  */
 namespace org.example.mynetwork
-asset Commodity identified by tradingSymbol {
-    o String tradingSymbol
+asset Sicknote identified by sickNoteID {
+    o String sickNoteID
     o String description
-    o String mainExchange
-    o Double quantity
-    --> Trader owner
+    o Double cid
+    o Doctor doctor 
+    o Pacient pacient
 }
-participant Trader identified by tradeId {
-    o String tradeId
+
+participant Doctor identified by doctorId {
+    o String doctorId
     o String firstName
     o String lastName
 }
-transaction Trade {
-    --> Commodity commodity
-    --> Trader newOwner
+
+participant Pacient identified by pacientID {
+    o String pacientID
+    o String firstName
+    o String lastName
 }
+
+/*
+transaction Trade {
+    --> Sicknote commodity
+    --> Doctor newOwner
+}*/
