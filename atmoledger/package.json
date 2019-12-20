@@ -1,6 +1,6 @@
 {
-  "name": "angular-v3",
-  "description": "Hyperledger Composer Angular project",
+  "name": "atmoledger",
+  "description": "atmoledger project",
   "version": "0.0.1",
   "author": "rafael",
   "email": "rafael@",
@@ -10,13 +10,14 @@
     "npm": ">=5"
   },
   "bin": {
-    "angular-v3": "app.js"
+    "atmoledger": "app.js"
   },
   "scripts": {
     "ng": "ng",
     "build": "ng build",
     "prepack": "npm run build",
-    "start": "ng serve --proxy-config proxy.conf.js --host 159.65.107.43:3000",
+    "api": "composer-rest-server --card admin@tutorial-network --namespaces always --port 3000",
+    "start": "concurrently \"ng serve --proxy-config proxy.conf.js --host 0.0.0.0\" \"npm run api\"",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test --watch false",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
@@ -34,6 +35,7 @@
     "@angular/router": "^4.0.0",
     "bootstrap": "^3.3.7",
     "cfenv": "^1.0.4",
+    "composer-rest-server": "^0.20.9",
     "concurrently": "^3.1.0",
     "config": "^1.21.0",
     "core-js": "^2.4.1",
